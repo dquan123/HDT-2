@@ -18,6 +18,12 @@ public class App implements iCalculadora
     public int multiplicacion(int n1, int n2){
         return n1*n2;
     }
-    int evaluate(String expresion);
+
+    @Override
+    public int evaluate (String expresion) throws Exception {
+
+        int resultado = 2;
+        return resultado;
+    }
 
 }
