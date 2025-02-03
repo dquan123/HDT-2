@@ -11,7 +11,7 @@ public class mainLicuadora {
             App c = new App(); //Se crea el objeto tipo app
             String linea = br.readLine(); //Lee la línea y la guarda en el String linea
             
-            if (linea == null || linea.isEmpty()) {//Verifica que las líneas tenga caracteres
+            if (linea == null || linea.isEmpty()) {//Verifica que las líneas tengan caracteres
                 System.out.println("El archivo está vacío o contiene una línea vacía.");
                 return;
             }
