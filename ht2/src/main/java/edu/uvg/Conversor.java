@@ -17,39 +17,39 @@ public class Conversor {
         StringBuilder cadenaNumeros = new StringBuilder(); //Crea un String Builder para leer la cadena.
 
         for (char c : infix.toCharArray()) {
-            if (Character.isDigit(c)) {
+            if (Character.isDigit(c)) { // Si el carácter es un número se agrega a la cadena de números.
                 cadenaNumeros.append(c);
-            } else if (c == ' ') {
+            } else if (c == ' ') { //Si el caracter es un espacio lo ignora
                 continue;
-            } else {
-                if (cadenaNumeros.length() > 0) {
+            } else { //Si no es un número o un espacio, debe ser un parentesis, por lo tanto
+                if (cadenaNumeros.length() > 0) { //Si hay un número en la cadena se agrega ala expresión
                     postfix.append(cadenaNumeros).append(' ');
-                    cadenaNumeros.setLength(0);
+                    cadenaNumeros.setLength(0);//Se limpia para el siguiente número.
                 }
-                if (c == '(') {
+                if (c == '(') { //Si es un parentesis de apertura se agrega al stack
                     stack.push(c);
-                } else if (c == ')') {
-                    while (!stack.isEmpty() && stack.peek() != '(') {
+                } else if (c == ')') { //Si es un parentesis de cierre
+                    while (!stack.isEmpty() && stack.peek() != '(') { //Desapila hasta encontrar el parentesis de apertura correspondiente
                         postfix.append(stack.pop()).append(' ');
                     }
-                    stack.pop();
-                } else {
-                    while (!stack.isEmpty() && Jerarquia(stack.peek()) >= Jerarquia(c)) {
+                    stack.pop(); //Se elimina el parentesis de apertura
+                } else { //Si es un operador
+                    while (!stack.isEmpty() && Jerarquia(stack.peek()) >= Jerarquia(c)) { //Busca operadores en el stack con mayor o igual jerarquía.
                         postfix.append(stack.pop()).append(' ');
                     }
-                    stack.push(c);
+                    stack.push(c); //Apila el operador actual.
                 }
             }
         }
 
-        if (cadenaNumeros.length() > 0) {
+        if (cadenaNumeros.length() > 0) { //Si hay un número acumulado se añade al resultado final
             postfix.append(cadenaNumeros).append(' ');
         }
 
-        while (!stack.isEmpty()) {
+        while (!stack.isEmpty()) { //Desapila los operadores restantes.
             postfix.append(stack.pop()).append(' ');
         }
 
-        return postfix.toString().trim();
+        return postfix.toString().trim(); //Retorna el resultado final que es una expresión postfix.
     }
 }
