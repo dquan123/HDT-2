@@ -4,12 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Scanner;
-
-public class Main {
+public class main {
     public static void main(String[] args) {
         // Ruta del archivo que contiene la expresión infix a evaluar
         String ruta = "C:\\Users\\dquan\\OneDrive\\Documentos\\Diego Quan\\UVG\\Ciclo 3\\Algoritmos y Estructura de datos\\Hoja de trabajo 2\\HDT-2\\ht2\\src\\main\\java\\edu\\uvg\\Postfix.txt";
@@ -33,7 +28,7 @@ public class Main {
             int listaOpcion = scanner.nextInt();
 
             // Se crea una lista según la opción elegida
-            IList<Integer> list = (listaOpcion == 1) ? new SingleLinkedList<>() : new DoubleLinkedList<>();
+            IList<Integer> list = (listaOpcion == 1) ? new SimpleEncadenadas<>() : new DobleEncadenadas<>();
             stack = new StackList<>(list); // Se usa la lista como base para la pila
         } else {
             // Si el usuario elige una implementación de pila estándar
@@ -55,7 +50,7 @@ public class Main {
             System.out.println("Expresión infix leída: " + infixExpresion);
 
             // Convierte la expresión de notación infix a notación postfix
-            String postfixExpresion = InfixToPostfixConverter.convert(infixExpresion);
+            String postfixExpresion = Conversor.Conversion(infixExpresion);
             System.out.println("Expresión convertida a postfix: " + postfixExpresion);
 
             // Obtiene la instancia única de la calculadora y evalúa la expresión postfix

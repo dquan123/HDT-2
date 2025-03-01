@@ -22,14 +22,14 @@ class DoubleNode<T> {
  * Implementación de una lista doblemente enlazada.
  * @param <T> Tipo de dato almacenado en la lista.
  */
-public class DoubleLinkedList<T> implements IList<T> {
+public class DobleEncadenadas<T> implements IList<T> {
     private DoubleNode<T> head;
     private int size;
     
     /**
      * Constructor de la lista doblemente enlazada.
      */
-    public DoubleLinkedList() {
+    public DobleEncadenadas() {
         this.head = null;
         this.size = 0;
     }
