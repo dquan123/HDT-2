@@ -22,14 +22,14 @@ class Node<T> {
  * Implementación de una lista simplemente enlazada.
  * @param <T> Tipo de dato almacenado en la lista.
  */
-public class SingleLinkedList<T> implements IList<T> {
+public class SimpleEncadenadas<T> implements IList<T> {
     private Node<T> head;
     private int size;
     
     /**
      * Constructor de la lista simplemente enlazada.
      */
-    public SingleLinkedList() {
+    public SimpleEncadenadas() {
         this.head = null;
         this.size = 0;
     }
