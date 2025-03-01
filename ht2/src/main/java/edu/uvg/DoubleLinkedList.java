@@ -1,35 +1,35 @@
 package edu.uvg;
 
 /**
- * Clase que representa un nodo en una lista simplemente enlazada.
+ * Clase que representa un nodo en una lista doblemente enlazada.
  * @param <T> Tipo de dato almacenado en el nodo.
  */
-class Node<T> {
+class DoubleNode<T> {
     T data;
-    Node<T> next;
+    DoubleNode<T> next, prev;
     
     /**
      * Constructor del nodo.
      * @param data El dato a almacenar en el nodo.
      */
-    public Node(T data) {
+    public DoubleNode(T data) {
         this.data = data;
-        this.next = null;
+        this.next = this.prev = null;
     }
 }
 
 /**
- * Implementación de una lista simplemente enlazada.
+ * Implementación de una lista doblemente enlazada.
  * @param <T> Tipo de dato almacenado en la lista.
  */
-public class SingleLinkedList<T> implements IList<T> {
-    private Node<T> head;
+public class DoubleLinkedList<T> implements IList<T> {
+    private DoubleNode<T> head;
     private int size;
     
     /**
-     * Constructor de la lista simplemente enlazada.
+     * Constructor de la lista doblemente enlazada.
      */
-    public SingleLinkedList() {
+    public DoubleLinkedList() {
         this.head = null;
         this.size = 0;
     }
@@ -40,7 +40,8 @@ public class SingleLinkedList<T> implements IList<T> {
      */
     @Override
     public void add(T item) {
-        Node<T> newNode = new Node<>(item);
+        DoubleNode<T> newNode = new DoubleNode<>(item);
+        if (head != null) head.prev = newNode;
         newNode.next = head;
         head = newNode;
         size++;
@@ -56,6 +57,7 @@ public class SingleLinkedList<T> implements IList<T> {
         if (isEmpty()) throw new Exception("Lista vacía");
         T data = head.data;
         head = head.next;
+        if (head != null) head.prev = null;
         size--;
         return data;
     }
